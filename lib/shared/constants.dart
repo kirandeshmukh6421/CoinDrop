@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-String kAppName = "Portfolio Tracker";
+String kAppName = "CoinDrop";
 // Colors
 Color kAccentColor = Colors.grey[600];
 Color kDarkGrey = Colors.grey[900];

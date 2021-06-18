@@ -1,5 +1,5 @@
-import 'package:portfolio_tracker/screens/news/crypto_news.dart';
-import 'package:portfolio_tracker/screens/news/stocks_news.dart';
+import 'package:coindrop/screens/news/crypto_news.dart';
+import 'package:coindrop/screens/news/stocks_news.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/constants.dart';

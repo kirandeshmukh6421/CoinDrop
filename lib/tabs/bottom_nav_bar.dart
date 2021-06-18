@@ -1,4 +1,4 @@
-import 'package:portfolio_tracker/tabs/nested_tabs/news_tab.dart';
+import 'package:coindrop/tabs/nested_tabs/news_tab.dart';
 
 import '../shared/constants.dart';
 import 'package:flutter/material.dart';

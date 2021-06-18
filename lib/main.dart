@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Portfolio Tracker',
+      title: 'CoinDrop',
       theme: ThemeData(
         primaryColor: kDarkGrey,
         accentColor: kAccentColor,

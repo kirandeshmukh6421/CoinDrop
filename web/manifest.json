@@ -1,6 +1,6 @@
 {
-  "name": "portfolio_tracker",
-  "short_name": "portfolio_tracker",
+  "name": "coindrop",
+  "short_name": "coindrop",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0175C2",

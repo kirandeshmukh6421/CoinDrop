@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.portfolio_tracker">
+    package="com.example.coindrop">
     <queries>
     <intent>
             <action android:name="android.intent.action.VIEW" />
@@ -19,7 +19,7 @@
         </intent>
     </queries>
    <application
-        android:label="portfolio_tracker"
+        android:label="coindrop"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

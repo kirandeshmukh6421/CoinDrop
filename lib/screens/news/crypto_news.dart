@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_tracker/shared/loading.dart';
+import 'package:coindrop/shared/loading.dart';
 import 'package:url_launcher/link.dart';
 import '../../services/news_network.dart';
 import '../../shared/constants.dart';
