@@ -19,7 +19,7 @@
         </intent>
     </queries>
    <application
-        android:label="coindrop"
+        android:label="CoinDrop"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
