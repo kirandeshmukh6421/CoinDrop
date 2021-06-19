@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "106438349708",
+    "project_id": "coindrop-19cc0",
+    "storage_bucket": "coindrop-19cc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106438349708:android:843f60c0b3130aa7647ca9",
+        "android_client_info": {
+          "package_name": "com.beaztapps.coindrop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106438349708-4l1pcpoao80hsk91bdc120eeaocp02on.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqdW3Nva65XU2_OjBJHIBOBliZ5o3kQpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106438349708-4l1pcpoao80hsk91bdc120eeaocp02on.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
