@@ -34,3 +34,7 @@ flutter:
       fonts:
         - asset: fonts/OpenSans-Bold.ttf
         - asset: fonts/OpenSans-Light.ttf
+
+    - family: Pacifico
+      fonts:
+        - asset: fonts/Pacifico-Regular.ttf

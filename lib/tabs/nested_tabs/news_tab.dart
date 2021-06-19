@@ -26,11 +26,11 @@ class _NewsTabState extends State<NewsTab> {
             tabs: [
               Text(
                 'CRYPTO',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 14),
               ),
               Text(
                 'STOCKS',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 14),
               ),
             ],
           ),

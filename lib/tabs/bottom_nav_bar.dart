@@ -49,7 +49,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           )
         ],
         centerTitle: true,
-        title: Text(kAppName),
+        title: kAppName,
         elevation: 0,
       ),
       backgroundColor: kDarkGrey,

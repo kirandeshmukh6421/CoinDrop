@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-String kAppName = "CoinDrop";
+Text kAppName = Text(
+  "CoinDrop",
+  style: TextStyle(
+    fontFamily: 'Pacifico',
+    fontSize: 24,
+  ),
+);
 // Colors
 Color kAccentColor = Colors.grey[600];
 Color kDarkGrey = Colors.grey[900];
