@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
 import 'dart:convert';
 
-import '../models/news.dart';
+import '../../models/news.dart';
 
 Future<List<News>> getNews(String query) async {
   String url =

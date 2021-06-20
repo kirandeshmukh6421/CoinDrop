@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:coindrop/shared/loading.dart';
 import 'package:url_launcher/link.dart';
-import '../../services/news_network.dart';
+import '../../services/network/news_network.dart';
 import '../../shared/constants.dart';
 import '../../models/news.dart';
 

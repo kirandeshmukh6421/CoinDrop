@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 // <---------- Local Imports ---------->
 import '../../models/stock.dart'; // Imports Stock Model.
 import '../../shared/constants.dart'; // Imports UI Constants.
-import '../../services/stock_network.dart'; // Imports Network Methods.
+import '../../services/network/stock_network.dart'; // Imports Network Methods.
 
 class StockMarketPage extends StatefulWidget {
   @override

@@ -1,9 +1,19 @@
+import 'package:coindrop/models/app_user.dart';
+import 'package:coindrop/services/database/auth.dart';
 import 'package:coindrop/tabs/nested_tabs/news_tab.dart';
+import 'package:provider/provider.dart';
 
 import '../shared/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'nested_tabs/markets_tab.dart';
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: SafeArea(child: BottomNavBar()));
+  }
+}
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -11,9 +21,12 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  final AuthService _auth = AuthService();
+
   int currentPage = 1;
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<AppUser>(context);
     final List<BottomNavigationBarItem> items = [
       BottomNavigationBarItem(
           backgroundColor: kDarkGrey,
@@ -42,7 +55,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              await _auth.signOut();
+            },
             icon: Icon(
               Icons.power_settings_new_outlined,
             ),
@@ -63,7 +78,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         children: [
           Center(
             child: Text(
-              'Watchlist',
+              user.uid,
               style: TextStyle(color: Colors.white),
             ),
           ),

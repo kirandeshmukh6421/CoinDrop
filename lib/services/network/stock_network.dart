@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart';
-import '../models/stock.dart';
+import '../../models/stock.dart';
 
 Future<List<Stock>> getStockData() async {
   List<Stock> stockList = [];

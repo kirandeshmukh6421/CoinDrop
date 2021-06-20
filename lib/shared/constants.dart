@@ -7,6 +7,15 @@ Text kAppName = Text(
     fontSize: 24,
   ),
 );
+
+Text kAppLogoName = Text(
+  "CoinDrop",
+  style: TextStyle(
+    fontFamily: 'Pacifico',
+    fontSize: 45,
+    color: Colors.white,
+  ),
+);
 // Colors
 Color kAccentColor = Colors.grey[600];
 Color kDarkGrey = Colors.grey[900];
@@ -60,4 +69,32 @@ Icon kDownArrow = Icon(
   Icons.arrow_downward,
   color: Colors.white,
   size: 15,
+);
+
+const kTextInputDecoration = InputDecoration(
+  border: InputBorder.none,
+  contentPadding: EdgeInsets.only(top: 14.0),
+);
+
+final kBoxStyle = BoxDecoration(
+  color: Colors.white,
+  borderRadius: BorderRadius.circular(10.0),
+  boxShadow: [
+    BoxShadow(
+      color: Colors.black12,
+      blurRadius: 6.0,
+      offset: Offset(0, 2),
+    ),
+  ],
+);
+
+final kHintStyle = TextStyle(
+    color: Colors.blueGrey[900],
+    fontFamily: 'OpenSans',
+    fontWeight: FontWeight.w500);
+
+final kLabelStyle = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'OpenSans',
 );

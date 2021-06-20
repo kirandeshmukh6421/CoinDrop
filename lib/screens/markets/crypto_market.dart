@@ -8,7 +8,7 @@ import 'package:coindrop/shared/loading.dart';
 // <---------- Local Imports ---------->
 import '../../models/coin.dart'; // Imports Coin Model.
 import '../../shared/constants.dart'; // Imports UI Constants.
-import '../../services/crypto_network.dart'; // Imports Network Methods.
+import '../../services/network/crypto_network.dart'; // Imports Network Methods.
 
 class CryptoMarketPage extends StatefulWidget {
   @override

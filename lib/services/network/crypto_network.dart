@@ -1,6 +1,6 @@
 import 'package:http/http.dart';
 import 'dart:convert';
-import '../models/coin.dart';
+import '../../models/coin.dart';
 
 Future<List<Coin>> getCoinData() async {
   var ticker, name, currentPrice, high, low, open, percentage;
