@@ -52,7 +52,7 @@ class _SignInState extends State<SignIn> {
                       Container(
                         alignment: Alignment.centerLeft,
                         decoration: kBoxStyle,
-                        height: 60.0,
+                        height: 62.0,
                         child: TextFormField(
                           style: TextStyle(
                             color: Colors.black,

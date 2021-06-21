@@ -53,7 +53,7 @@ class _RegisterState extends State<Register> {
                       Container(
                         alignment: Alignment.centerLeft,
                         decoration: kBoxStyle,
-                        height: 60.0,
+                        height: 62.0,
                         child: TextFormField(
                           style: TextStyle(
                             color: Colors.blueGrey,
@@ -79,7 +79,7 @@ class _RegisterState extends State<Register> {
                       Container(
                         alignment: Alignment.centerLeft,
                         decoration: kBoxStyle,
-                        height: 60.0,
+                        height: 62.0,
                         child: TextFormField(
                           style: TextStyle(
                             color: Colors.blueGrey,
@@ -112,7 +112,7 @@ class _RegisterState extends State<Register> {
                         child: TextButton(
                             child: Text(
                               'Sign Up',
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: kDarkGrey),
                             ),
                             onPressed: () async {
                               if (_formKey.currentState.validate()) {
