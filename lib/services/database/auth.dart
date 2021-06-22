@@ -1,4 +1,5 @@
 import 'package:coindrop/models/app_user.dart';
+import 'package:coindrop/services/database/user_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
@@ -18,16 +19,15 @@ class AuthService {
   }
 
   // Register with Email and Password
-  Future registerWithEmailAndPassword(String email, String password) async {
+  Future registerWithEmailAndPassword(
+      String email, String password, String username) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
-      // await DatabaseService(uid: user.uid).updateUserData(
-      //   '0',
-      //   'Crew Member',
-      //   100,
-      // );
+      await UserDatabaseService(uid: user.uid).updateUserData(
+        username,
+      );
       return _userFromFirebaseUser(user);
     } catch (error) {
       String errorMessage = '';
@@ -36,8 +36,9 @@ class AuthService {
           errorMessage = "Your email address appears to be malformed.";
           break;
         case "email-already-in-use":
-          errorMessage = " The email address is already in use.";
+          errorMessage = "The email address is already in use.";
           break;
+
         default:
           errorMessage = "An undefined Error happened.";
       }
@@ -62,12 +63,11 @@ class AuthService {
         case "user-not-found":
           errorMessage = "User not found.";
           break;
-        case "invalid-password":
-          errorMessage =
-              "The provided value for the password user property is invalid. It must be a string with at least six characters.";
+        case "wrong-password":
+          errorMessage = "Wrong Password";
           break;
         default:
-          errorMessage = "An undefined Error happened.";
+          errorMessage = "An undefined error happened.";
       }
       print(error);
       return errorMessage;

@@ -1,6 +1,7 @@
 import 'package:coindrop/models/app_user.dart';
 import 'package:coindrop/services/database/auth.dart';
 import 'package:coindrop/tabs/nested_tabs/news_tab.dart';
+import 'package:coindrop/tabs/nested_tabs/user_data.dart';
 import 'package:provider/provider.dart';
 
 import '../shared/constants.dart';
@@ -77,10 +78,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         },
         children: [
           Center(
-            child: Text(
-              user.uid,
-              style: TextStyle(color: Colors.white),
-            ),
+            child: UserScreen(),
           ),
           Center(
             child: MarketsTab(),

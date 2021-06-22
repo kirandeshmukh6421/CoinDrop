@@ -21,6 +21,7 @@ class _RegisterState extends State<Register> {
   // User Form Inputs.
   String email = '';
   String password = '';
+  String username = '';
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +51,33 @@ class _RegisterState extends State<Register> {
                       ),
                       kAppLogoName,
                       SizedBox(height: 50.0),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxStyle,
+                        height: 62.0,
+                        child: TextFormField(
+                          style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontFamily: 'OpenSans',
+                          ),
+                          decoration: kTextInputDecoration.copyWith(
+                            prefixIcon: Icon(
+                              Icons.account_box,
+                              color: Colors.blueGrey,
+                            ),
+                            hintText: 'Enter your Username',
+                            hintStyle: kHintStyle,
+                          ),
+                          validator: (val) =>
+                              val.isEmpty ? '\t\t\tEnter a Username' : null,
+                          onChanged: (val) {
+                            setState(() => username = val.trim());
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
                       Container(
                         alignment: Alignment.centerLeft,
                         decoration: kBoxStyle,
@@ -119,21 +147,29 @@ class _RegisterState extends State<Register> {
                                 setState(() => loading = true);
                                 dynamic result =
                                     await _auth.registerWithEmailAndPassword(
-                                        email, password);
+                                        email, password, username);
                                 if (result.runtimeType == String) {
                                   setState(() {
                                     loading = false;
                                     error = result;
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text(
+                                        error,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontFamily: 'OpenSans',
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ));
                                   });
                                 }
                               }
                             }),
                       ),
                       SizedBox(height: 12.0),
-                      Text(
-                        error,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
-                      ),
                       Container(
                         alignment: Alignment.center,
                         child: TextButton(

@@ -123,16 +123,24 @@ class _SignInState extends State<SignIn> {
                                   setState(() {
                                     loading = false;
                                     error = result;
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text(
+                                        error,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontFamily: 'OpenSans',
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ));
                                   });
                                 }
                               }
                             }),
                       ),
                       SizedBox(height: 12.0),
-                      Text(
-                        error,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
-                      ),
                       Container(
                         alignment: Alignment.center,
                         child: TextButton(
