@@ -1,5 +1,5 @@
 import 'package:coindrop/models/app_user.dart';
-import 'package:coindrop/screens/wrapper.dart';
+import 'package:coindrop/screens/splash_screen.dart';
 import 'package:coindrop/services/database/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kDarkGrey,
           accentColor: kAccentColor,
         ),
-        home: Wrapper(),
+        home: SplashScreen(),
       ),
     );
   }
