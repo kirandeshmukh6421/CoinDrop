@@ -34,12 +34,9 @@ class _NewsTabState extends State<NewsTab> {
               ),
             ],
           ),
-          // title: Text(kAppName),
-          // centerTitle: true,
         ),
         body: TabBarView(
           children: [
-            //now, we replace this to nested tab screen
             CryptoNews(),
             StocksNews(),
           ],

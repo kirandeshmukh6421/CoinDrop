@@ -1,6 +1,8 @@
 // <---------- Dart Imports ---------->
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:coindrop/services/database/crypto_watchlist_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:coindrop/shared/loading.dart';
@@ -29,7 +31,7 @@ class _CryptoMarketPageState extends State<CryptoMarketPage> {
   }
 
   void setData() async {
-    coins = await getCoinData();
+    coins = await CryptoNetwork().getCoins();
     if (this.mounted)
       setState(() {
         coinsFiltered = coins;
@@ -103,7 +105,22 @@ class _CryptoMarketPageState extends State<CryptoMarketPage> {
 
   _listItem(index) {
     return ListTile(
-      onTap: () {},
+      onLongPress: () {
+        CoinWatchlistDatabaseService(uid: FirebaseAuth.instance.currentUser.uid)
+            .addCoin(
+          coinsFiltered[index].ticker.toUpperCase(),
+          coinsFiltered[index].name,
+          coinsFiltered[index].currentPrice,
+          coinsFiltered[index].open,
+          coinsFiltered[index].high,
+          coinsFiltered[index].low,
+          coinsFiltered[index].percentage,
+          coinsFiltered[index].volume,
+          coinsFiltered[index].buy,
+          coinsFiltered[index].sell,
+        );
+        print('Added to watchlist');
+      },
       tileColor: kMediumGrey,
       leading: CircleAvatar(
         backgroundColor: Colors.transparent,

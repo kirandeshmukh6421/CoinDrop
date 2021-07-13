@@ -1,15 +1,15 @@
-import '../../screens/markets/crypto_market.dart';
-import '../../screens/markets/stock_market.dart';
+import 'package:coindrop/screens/watchlist/crypto_watchlist.dart';
+import 'package:coindrop/screens/watchlist/stock_watchlist.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/constants.dart';
 
-class MarketsTab extends StatefulWidget {
+class WatchlistTab extends StatefulWidget {
   @override
-  _MarketsTabState createState() => _MarketsTabState();
+  _WatchlistTabState createState() => _WatchlistTabState();
 }
 
-class _MarketsTabState extends State<MarketsTab> {
+class _WatchlistTabState extends State<WatchlistTab> {
   int currentPage = 1; // For switching tabs.
   @override
   Widget build(BuildContext context) {
@@ -37,8 +37,8 @@ class _MarketsTabState extends State<MarketsTab> {
         ),
         body: TabBarView(
           children: [
-            CryptoMarketPage(),
-            StockMarketPage(),
+            CryptoWatchlist(),
+            StockWatchlist(),
           ],
         ),
       ),

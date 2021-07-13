@@ -1,6 +1,8 @@
 // <---------- Dart Imports ---------->
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:coindrop/services/database/stock_watchlist_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +30,7 @@ class _StockMarketPageState extends State<StockMarketPage> {
   }
 
   void setData() async {
-    stocks = await getStockData();
+    stocks = await StockNetwork().getStocks();
     if (this.mounted)
       setState(() {
         stocksFiltered = stocks;
@@ -100,6 +102,27 @@ class _StockMarketPageState extends State<StockMarketPage> {
 
   _listItem(index) {
     return ListTile(
+      onLongPress: () {
+        StockWatchlistDatabaseService(
+                uid: FirebaseAuth.instance.currentUser.uid)
+            .addStock(
+          stocksFiltered[index].ticker.toUpperCase(),
+          stocksFiltered[index].name,
+          stocksFiltered[index].currentPrice,
+          stocksFiltered[index].open,
+          stocksFiltered[index].high,
+          stocksFiltered[index].low,
+          stocksFiltered[index].percentage,
+          stocksFiltered[index].volume,
+          stocksFiltered[index].closeyest,
+          stocksFiltered[index].marketcap,
+          stocksFiltered[index].eps,
+          stocksFiltered[index].pe,
+          stocksFiltered[index].high52,
+          stocksFiltered[index].low52,
+        );
+        print('Added to watchlist');
+      },
       // <-------------- Show Stock Icon -------------->
       leading: CircleAvatar(
         // Choose Random Color for Stock Icon.
@@ -125,10 +148,9 @@ class _StockMarketPageState extends State<StockMarketPage> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            // '₹ ${snapshot.data[index].currentPrice}',
             '${NumberFormat.simpleCurrency(
               locale: 'en_IN',
-            ).format(stocksFiltered[index].currentPrice)}',
+            ).format(double.parse(stocksFiltered[index].currentPrice.toString()))}',
             style: kCurrentPriceTextStyle(stocksFiltered[index].percentage),
           ),
           SizedBox(
@@ -154,7 +176,6 @@ class _StockMarketPageState extends State<StockMarketPage> {
                   stocksFiltered[index].percentage >= 0 ? kUpArrow : kDownArrow,
                   Text(
                     '${stocksFiltered[index].percentage.abs()}%',
-                    // '${percentage.abs().toStringAsFixed(2)}%',
                     style: kPercentageTextStyle,
                   ),
                 ],

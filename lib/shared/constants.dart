@@ -4,7 +4,7 @@ Text kAppName = Text(
   "CoinDrop",
   style: TextStyle(
     fontFamily: 'Pacifico',
-    fontSize: 24,
+    fontSize: 28,
   ),
 );
 

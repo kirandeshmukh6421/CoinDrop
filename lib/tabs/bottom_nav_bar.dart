@@ -1,8 +1,6 @@
-import 'package:coindrop/models/app_user.dart';
 import 'package:coindrop/services/database/auth.dart';
 import 'package:coindrop/tabs/nested_tabs/news_tab.dart';
-import 'package:coindrop/tabs/nested_tabs/user_data.dart';
-import 'package:provider/provider.dart';
+import 'package:coindrop/tabs/nested_tabs/watchlist_tab.dart';
 
 import '../shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +25,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int currentPage = 1;
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<AppUser>(context);
     final List<BottomNavigationBarItem> items = [
       BottomNavigationBarItem(
           backgroundColor: kDarkGrey,
@@ -78,7 +75,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         },
         children: [
           Center(
-            child: UserScreen(),
+            child: WatchlistTab(),
           ),
           Center(
             child: MarketsTab(),

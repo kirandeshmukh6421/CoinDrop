@@ -24,14 +24,16 @@ class _UserScreenState extends State<UserScreen> {
               ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    UserDatabaseService(uid: user.uid).updateUserData('Kiran');
+                    // UserDatabaseService(uid: user.uid).updateUserData('Kiran');
+                    // UserDatabaseService(uid: user.uid)
+                    //     .addCoin('ADA', 'Cardano');
                   });
                 },
                 child: Text('Update User'),
               ),
               Center(
                 child: Text(
-                  userData.name,
+                  '${userData.name}/${userData.email}',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
