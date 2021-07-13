@@ -108,18 +108,28 @@ class _CryptoMarketPageState extends State<CryptoMarketPage> {
       onLongPress: () {
         CoinWatchlistDatabaseService(uid: FirebaseAuth.instance.currentUser.uid)
             .addCoin(
-          coinsFiltered[index].ticker.toUpperCase(),
-          coinsFiltered[index].name,
-          coinsFiltered[index].currentPrice,
-          coinsFiltered[index].open,
-          coinsFiltered[index].high,
-          coinsFiltered[index].low,
-          coinsFiltered[index].percentage,
-          coinsFiltered[index].volume,
-          coinsFiltered[index].buy,
-          coinsFiltered[index].sell,
+          ticker: coinsFiltered[index].ticker.toUpperCase(),
+          name: coinsFiltered[index].name,
+          currentPrice: coinsFiltered[index].currentPrice,
+          open: coinsFiltered[index].open,
+          high: coinsFiltered[index].high,
+          low: coinsFiltered[index].low,
+          percentage: coinsFiltered[index].percentage,
+          volume: coinsFiltered[index].volume,
+          buy: coinsFiltered[index].buy,
+          sell: coinsFiltered[index].sell,
         );
-        print('Added to watchlist');
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.blue,
+          content: Text(
+            '${coinsFiltered[index].ticker.toUpperCase()} was added to your Watchlist.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ));
       },
       tileColor: kMediumGrey,
       leading: CircleAvatar(

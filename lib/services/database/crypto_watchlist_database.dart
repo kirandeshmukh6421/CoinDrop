@@ -31,7 +31,7 @@ class CoinWatchlistDatabaseService {
   }
 
   // Add Coin to Watchlist
-  Future addCoin(
+  Future addCoin({
     String ticker,
     String name,
     double currentPrice,
@@ -42,7 +42,7 @@ class CoinWatchlistDatabaseService {
     double volume,
     double buy,
     double sell,
-  ) async {
+  }) async {
     return await FirebaseFirestore.instance
         .doc('/watchlists/$uid/crypto/$ticker')
         .set({

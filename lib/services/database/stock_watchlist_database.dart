@@ -35,7 +35,7 @@ class StockWatchlistDatabaseService {
   }
 
   // Add Stock to Watchlist
-  Future addStock(
+  Future addStock({
     String ticker,
     String name,
     num currentPrice,
@@ -50,7 +50,7 @@ class StockWatchlistDatabaseService {
     var marketcap,
     var pe,
     var eps,
-  ) async {
+  }) async {
     return await FirebaseFirestore.instance
         .doc('/watchlists/$uid/stocks/$ticker')
         .set({
