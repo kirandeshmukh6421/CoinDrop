@@ -1,4 +1,5 @@
 import 'package:coindrop/models/stock.dart';
+import 'package:coindrop/screens/watchlist/widgets/stock_remove_form.dart';
 import 'package:coindrop/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -27,6 +28,19 @@ class _StockTileState extends State<StockTile> {
         child: Column(
           children: [
             ListTile(
+              onTap: () {
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        color: kMediumGrey,
+                        padding: EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 60.0),
+                        child: StockRemoveForm(widget.stock),
+                      );
+                    });
+              },
               leading: CircleAvatar(
                 // Choose Random Color for Stock Icon.
                 backgroundColor:

@@ -51,16 +51,43 @@ class _BottomNavBarState extends State<BottomNavBar> {
         duration: const Duration(milliseconds: 200), curve: Curves.linear);
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () async {
-              await _auth.signOut();
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            color: kMediumGrey,
+            padding: EdgeInsets.all(0),
+            onSelected: choiceAction,
+            itemBuilder: (BuildContext context) {
+              return Constants.choices.map((Map choice) {
+                return PopupMenuItem<String>(
+                  padding: EdgeInsets.all(0),
+                  value: choice["text"],
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      choice["icon"],
+                      Text(
+                        choice["text"],
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList();
             },
-            icon: Icon(
-              Icons.power_settings_new_outlined,
-            ),
           )
         ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () async {
+        //       await _auth.signOut();
+        //     },
+        //     icon: Icon(
+        //       Icons.power_settings_new_outlined,
+        //     ),
+        //   )
+        // ],
         centerTitle: true,
         title: kAppName,
         elevation: 0,
@@ -101,4 +128,25 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
     );
   }
+
+  void choiceAction(String choice) async {
+    if (choice == Constants.Settings) {
+      print('Settings');
+    } else if (choice == Constants.SignOut) {
+      await _auth.signOut();
+    }
+  }
+}
+
+class Constants {
+  static const String Settings = 'Settings';
+  static const String SignOut = 'Sign out';
+  static const Icon SettingsIcon = Icon(Icons.settings);
+  static const Icon SignOutIcon = Icon(Icons.logout);
+
+  static const List<Map> choices = <Map>[
+    {"text": Settings, "icon": SettingsIcon},
+    {"text": SignOut, "icon": SignOutIcon},
+  ];
+  // static const List<Icon> icons = <Icon>[SettingsIcon, SignOutIcon];
 }

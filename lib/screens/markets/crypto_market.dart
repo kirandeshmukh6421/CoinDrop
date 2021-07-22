@@ -1,8 +1,7 @@
 // <---------- Dart Imports ---------->
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:coindrop/services/database/crypto_watchlist_database.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:coindrop/screens/markets/widgets/crypto_buy_form.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:coindrop/shared/loading.dart';
@@ -69,6 +68,18 @@ class _CryptoMarketPageState extends State<CryptoMarketPage> {
     );
   }
 
+  // _showBuyForm() {
+  //   showModalBottomSheet(
+  //       isScrollControlled: true,
+  //       context: context,
+  //       builder: (context) {
+  //         return Container(
+  //           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+  //           child: CryptoBuyForm(coinsFiltered[index]),
+  //         );
+  //       });
+  // }
+
   _searchBar() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -105,31 +116,17 @@ class _CryptoMarketPageState extends State<CryptoMarketPage> {
 
   _listItem(index) {
     return ListTile(
-      onLongPress: () {
-        CoinWatchlistDatabaseService(uid: FirebaseAuth.instance.currentUser.uid)
-            .addCoin(
-          ticker: coinsFiltered[index].ticker.toUpperCase(),
-          name: coinsFiltered[index].name,
-          currentPrice: coinsFiltered[index].currentPrice,
-          open: coinsFiltered[index].open,
-          high: coinsFiltered[index].high,
-          low: coinsFiltered[index].low,
-          percentage: coinsFiltered[index].percentage,
-          volume: coinsFiltered[index].volume,
-          buy: coinsFiltered[index].buy,
-          sell: coinsFiltered[index].sell,
-        );
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Colors.blue,
-          content: Text(
-            '${coinsFiltered[index].ticker.toUpperCase()} was added to your Watchlist.',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'OpenSans',
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ));
+      onTap: () {
+        showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) {
+              return Container(
+                color: kMediumGrey,
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+                child: CryptoBuyForm(coinsFiltered[index]),
+              );
+            });
       },
       tileColor: kMediumGrey,
       leading: CircleAvatar(

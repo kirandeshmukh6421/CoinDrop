@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:coindrop/models/app_user.dart';
 import 'package:coindrop/models/stock.dart';
 import 'package:coindrop/screens/watchlist/widgets/stock_list.dart';
@@ -13,11 +15,17 @@ class StockWatchlist extends StatefulWidget {
 }
 
 class _StockWatchlistState extends State<StockWatchlist> {
+  Timer timer;
   @override
   void initState() {
     super.initState();
     StockWatchlistDatabaseService(uid: FirebaseAuth.instance.currentUser.uid)
         .updateStockData();
+    timer = Timer.periodic(
+        Duration(seconds: 10),
+        (Timer t) => StockWatchlistDatabaseService(
+                uid: FirebaseAuth.instance.currentUser.uid)
+            .updateStockData());
   }
 
   @override

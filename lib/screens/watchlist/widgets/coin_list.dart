@@ -1,5 +1,6 @@
 import 'package:coindrop/models/coin.dart';
 import 'package:coindrop/screens/watchlist/widgets/coin_tile.dart';
+import 'package:coindrop/screens/watchlist/widgets/watchlist_empty.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,11 +13,13 @@ class _CoinListState extends State<CoinList> {
   @override
   Widget build(BuildContext context) {
     final coins = Provider.of<List<Coin>>(context) ?? [];
-    return ListView.builder(
-      itemCount: coins.length,
-      itemBuilder: (context, index) {
-        return CoinTile(coin: coins[index]);
-      },
-    );
+    return coins.isNotEmpty
+        ? ListView.builder(
+            itemCount: coins.length,
+            itemBuilder: (context, index) {
+              return CoinTile(coin: coins[index]);
+            },
+          )
+        : WatchlistEmpty('crypto');
   }
 }

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coindrop/models/coin.dart';
+import 'package:coindrop/screens/watchlist/widgets/crypto_remove_form.dart';
 import 'package:coindrop/shared/constants.dart';
 import 'package:coindrop/shared/loading.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,19 @@ class _CoinTileState extends State<CoinTile> {
         child: Column(
           children: [
             ListTile(
+              onTap: () {
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        color: kMediumGrey,
+                        padding: EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 60.0),
+                        child: CryptoRemoveForm(widget.coin),
+                      );
+                    });
+              },
               leading: CircleAvatar(
                 backgroundColor: Colors.transparent,
                 child: CachedNetworkImage(

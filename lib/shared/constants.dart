@@ -16,12 +16,27 @@ Text kAppLogoName = Text(
     color: Colors.white,
   ),
 );
+
 // Colors
 Color kAccentColor = Colors.grey[600];
 Color kDarkGrey = Colors.grey[900];
 Color kMediumGrey = Color(0xFF242424);
 
 // Text Styles
+TextStyle kEmptyTextStyle = TextStyle(
+  color: Colors.white,
+  fontFamily: 'OpenSans',
+  fontWeight: FontWeight.bold,
+  fontSize: 13,
+);
+
+TextStyle kEmptySubTextStyle = TextStyle(
+  color: kAccentColor,
+  fontFamily: 'OpenSans',
+  fontWeight: FontWeight.w500,
+  fontSize: 12,
+);
+
 TextStyle kNewsTextStyle = TextStyle(
   color: Colors.white,
   fontFamily: 'OpenSans',

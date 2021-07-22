@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:coindrop/models/app_user.dart';
 import 'package:coindrop/models/coin.dart';
 import 'package:coindrop/screens/watchlist/widgets/coin_list.dart';
@@ -13,11 +15,17 @@ class CryptoWatchlist extends StatefulWidget {
 }
 
 class _CryptoWatchlistState extends State<CryptoWatchlist> {
+  Timer timer;
   @override
   void initState() {
     super.initState();
     CoinWatchlistDatabaseService(uid: FirebaseAuth.instance.currentUser.uid)
         .updateCoinData();
+    timer = Timer.periodic(
+        Duration(seconds: 10),
+        (Timer t) => CoinWatchlistDatabaseService(
+                uid: FirebaseAuth.instance.currentUser.uid)
+            .updateCoinData());
   }
 
   @override

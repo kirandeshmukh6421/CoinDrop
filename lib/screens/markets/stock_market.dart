@@ -1,8 +1,7 @@
 // <---------- Dart Imports ---------->
 import 'dart:async';
 import 'dart:math' as math;
-import 'package:coindrop/services/database/stock_watchlist_database.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:coindrop/screens/markets/widgets/stock_buy_form.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
@@ -102,36 +101,17 @@ class _StockMarketPageState extends State<StockMarketPage> {
 
   _listItem(index) {
     return ListTile(
-      onLongPress: () {
-        StockWatchlistDatabaseService(
-                uid: FirebaseAuth.instance.currentUser.uid)
-            .addStock(
-          ticker: stocksFiltered[index].ticker.toUpperCase(),
-          name: stocksFiltered[index].name,
-          currentPrice: stocksFiltered[index].currentPrice,
-          open: stocksFiltered[index].open,
-          high: stocksFiltered[index].high,
-          low: stocksFiltered[index].low,
-          percentage: stocksFiltered[index].percentage,
-          volume: stocksFiltered[index].volume,
-          closeyest: stocksFiltered[index].closeyest,
-          marketcap: stocksFiltered[index].marketcap,
-          eps: stocksFiltered[index].eps,
-          pe: stocksFiltered[index].pe,
-          high52: stocksFiltered[index].high52,
-          low52: stocksFiltered[index].low52,
-        );
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Colors.blue,
-          content: Text(
-            '${stocksFiltered[index].ticker.toUpperCase()} was added to your Watchlist.',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'OpenSans',
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ));
+      onTap: () {
+        showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) {
+              return Container(
+                color: kMediumGrey,
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+                child: StockBuyForm(stocksFiltered[index]),
+              );
+            });
       },
       // <-------------- Show Stock Icon -------------->
       leading: CircleAvatar(
