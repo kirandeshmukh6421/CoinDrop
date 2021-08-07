@@ -1,5 +1,6 @@
 import 'package:coindrop/services/database/auth.dart';
 import 'package:coindrop/tabs/nested_tabs/news_tab.dart';
+import 'package:coindrop/tabs/nested_tabs/portfolio_tab.dart';
 import 'package:coindrop/tabs/nested_tabs/watchlist_tab.dart';
 
 import '../shared/constants.dart';
@@ -111,10 +112,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             child: NewsTab(),
           ),
           Center(
-            child: Text(
-              'Portfolio',
-              style: TextStyle(color: Colors.white),
-            ),
+            child: PortfolioTab(),
           ),
         ],
       ),

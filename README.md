@@ -1,16 +1,19 @@
-# coindrop
+# CoinDrop
 
-A new Flutter project.
+CoinDrop is an app designed for users to keep track of their entire investment portfolio, get detailed real-time prices and market information in one place.
 
-## Getting Started
+## About
 
-This project is a starting point for a Flutter application.
+CoinDrop enables users to stay informed on the latest live Cryptocurrency and Indian Stock prices in real-time, view essential market data at a glance and effectively monitor their investments. The app aggregates news from various sources, so that the users can keep track of market trends and can easily stay on top of the market, that help them take wiser financial decisions. The app emulates any real-world exchanges by enabling the users to set up their portfolio by manually adding their buy/sell transactions, which in turn, helps them keep tab on their treasured investments by providing important data like their profits and losses. The users can also add assets to their watchlist to keep track of the assets that they are interested in.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- The app displays real-time Stock and Cryptocurrency Prices with essential market data in the Markets Tab.
+- A Watchlist that contains a list of assets the user is interested in.
+- The app collects Market news from various sources and displays it to the user in the News Tab.
+- The User’s Portfolio with essential data like the assets they own, amount invested, profits, losses and other such aspects in the Portfolio Tab.
+- Users can manually buy/sell assets in the Markets Tab, which will be recorded as a Transaction, which in turn, updates the Transaction History and the value of the Portfolio.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+
+<img src="https://i.ibb.co/T0swHXV/imageedit-5-3401628186.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/6JNLgGh/imageedit-7-9644775942.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/T8RP7KD/imageedit-9-4957369339.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/HxxJ3xv/imageedit-11-4943956799.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/T1wfR8W/imageedit-13-4540398312.png" alt="drawing" width="300"/>

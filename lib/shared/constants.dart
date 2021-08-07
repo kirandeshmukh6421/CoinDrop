@@ -70,7 +70,7 @@ TextStyle kCurrentPriceTextStyle(var percentage) {
     fontFamily: 'OpenSans',
     fontWeight: FontWeight.bold,
     // Change color based on price movement.
-    color: percentage > 0 ? Colors.green : Colors.red,
+    color: percentage >= 0 ? Colors.green : Colors.red,
   );
 }
 

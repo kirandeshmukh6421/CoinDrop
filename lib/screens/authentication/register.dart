@@ -1,6 +1,8 @@
 import 'package:coindrop/services/database/auth.dart';
+import 'package:coindrop/services/database/crypto_portfolio_database.dart';
 import 'package:coindrop/shared/constants.dart';
 import 'package:coindrop/shared/loading.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -148,6 +150,10 @@ class _RegisterState extends State<Register> {
                                 dynamic result =
                                     await _auth.registerWithEmailAndPassword(
                                         email, password, username);
+                                CryptoPortfolioDatabaseService(
+                                        uid: FirebaseAuth
+                                            .instance.currentUser.uid)
+                                    .setInitialData();
                                 if (result.runtimeType == String) {
                                   setState(() {
                                     loading = false;

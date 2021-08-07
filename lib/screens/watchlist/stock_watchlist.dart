@@ -21,11 +21,11 @@ class _StockWatchlistState extends State<StockWatchlist> {
     super.initState();
     StockWatchlistDatabaseService(uid: FirebaseAuth.instance.currentUser.uid)
         .updateStockData();
-    timer = Timer.periodic(
-        Duration(seconds: 10),
-        (Timer t) => StockWatchlistDatabaseService(
-                uid: FirebaseAuth.instance.currentUser.uid)
-            .updateStockData());
+    // timer = Timer.periodic(
+    //     Duration(seconds: 10),
+    //     (Timer t) => StockWatchlistDatabaseService(
+    //             uid: FirebaseAuth.instance.currentUser.uid)
+    //         .updateStockData());
   }
 
   @override

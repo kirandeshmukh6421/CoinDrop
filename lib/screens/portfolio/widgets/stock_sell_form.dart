@@ -1,28 +1,29 @@
-import 'package:coindrop/models/stock.dart';
+import 'package:coindrop/models/asset.dart';
 import 'package:coindrop/services/database/stock_portfolio_database.dart';
-import 'package:coindrop/services/database/stock_watchlist_database.dart';
 import 'package:coindrop/shared/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class StockBuyForm extends StatefulWidget {
-  final Stock stock;
-  StockBuyForm(this.stock);
+class StockSellForm extends StatefulWidget {
+  final Stocks stock;
+  StockSellForm(this.stock);
 
   @override
-  _StockBuyFormState createState() => _StockBuyFormState();
+  _StockSellFormState createState() => _StockSellFormState();
 }
 
-class _StockBuyFormState extends State<StockBuyForm> {
+class _StockSellFormState extends State<StockSellForm> {
   void initState() {
-    _c = new TextEditingController();
+    _priceController = new TextEditingController();
+    _quantityController = new TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _c?.dispose();
+    _priceController?.dispose();
+    _quantityController?.dispose();
     super.dispose();
   }
 
@@ -30,7 +31,8 @@ class _StockBuyFormState extends State<StockBuyForm> {
   // Form Values
   double _price;
   int _quantity;
-  TextEditingController _c;
+  TextEditingController _priceController;
+  TextEditingController _quantityController;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -56,7 +58,7 @@ class _StockBuyFormState extends State<StockBuyForm> {
               ),
               Flexible(
                 child: TextFormField(
-                  controller: _c,
+                  controller: _priceController,
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.number,
                   style: TextStyle(
@@ -86,8 +88,9 @@ class _StockBuyFormState extends State<StockBuyForm> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    _c.text = "${widget.stock.currentPrice}";
-                    _price = widget.stock.currentPrice;
+                    _priceController.text =
+                        "${widget.stock.currentValue / widget.stock.quantity}";
+                    _price = widget.stock.currentValue / widget.stock.quantity;
                   });
                 },
                 child: Text(
@@ -111,6 +114,7 @@ class _StockBuyFormState extends State<StockBuyForm> {
               ),
               Flexible(
                 child: TextFormField(
+                  controller: _quantityController,
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.number,
                   style: TextStyle(
@@ -139,6 +143,18 @@ class _StockBuyFormState extends State<StockBuyForm> {
                   },
                 ),
               ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _quantityController.text = "${widget.stock.quantity}";
+                    _quantity = widget.stock.quantity;
+                  });
+                },
+                child: Text(
+                  'ALL',
+                  style: kLabelStyle.copyWith(fontSize: 16),
+                ),
+              ),
             ],
           ),
           SizedBox(height: 20),
@@ -148,47 +164,23 @@ class _StockBuyFormState extends State<StockBuyForm> {
                 child: GestureDetector(
                   onTap: () async {
                     if (_formKey.currentState.validate()) {
-                      if (await StockPortfolioDatabaseService(
-                                  uid: FirebaseAuth.instance.currentUser.uid)
-                              .checkIfDocExists(
-                                  widget.stock.ticker.toUpperCase()) ==
-                          false) {
-                        await StockPortfolioDatabaseService(
-                                uid: FirebaseAuth.instance.currentUser.uid)
-                            .buyStock(
-                          name: widget.stock.name,
-                          ticker: widget.stock.ticker.toUpperCase(),
-                          currentValue: (_quantity * _price),
-                          invested: (_quantity * _price),
-                          percentage: 0,
-                          profit: 0,
-                          quantity: _quantity,
-                        );
-                        StockPortfolioDatabaseService(
-                                uid: FirebaseAuth.instance.currentUser.uid)
-                            .updateTotalInvested();
-                        StockPortfolioDatabaseService(
-                                uid: FirebaseAuth.instance.currentUser.uid)
-                            .updateCurrentValue();
-                      } else {
-                        StockPortfolioDatabaseService(
-                                uid: FirebaseAuth.instance.currentUser.uid)
-                            .updatePortfolio();
-                        await StockPortfolioDatabaseService(
-                                uid: FirebaseAuth.instance.currentUser.uid)
-                            .partialBuy(
-                          ticker: widget.stock.ticker.toUpperCase(),
-                          price: _price,
-                          quantity: _quantity,
-                          invested: (_price * _quantity),
-                        );
-                        StockPortfolioDatabaseService(
-                                uid: FirebaseAuth.instance.currentUser.uid)
-                            .updateTotalInvested();
-                        StockPortfolioDatabaseService(
-                                uid: FirebaseAuth.instance.currentUser.uid)
-                            .updateCurrentValue();
-                      }
+                      await StockPortfolioDatabaseService(
+                              uid: FirebaseAuth.instance.currentUser.uid)
+                          .sellStock(
+                        ticker: widget.stock.ticker.toUpperCase(),
+                        price: _price,
+                        quantity: _quantity,
+                        invested: (_price * _quantity),
+                      );
+                      await StockPortfolioDatabaseService(
+                              uid: FirebaseAuth.instance.currentUser.uid)
+                          .updatePortfolio();
+                      StockPortfolioDatabaseService(
+                              uid: FirebaseAuth.instance.currentUser.uid)
+                          .updateTotalInvested();
+                      StockPortfolioDatabaseService(
+                              uid: FirebaseAuth.instance.currentUser.uid)
+                          .updateCurrentValue();
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           duration: Duration(
@@ -196,7 +188,7 @@ class _StockBuyFormState extends State<StockBuyForm> {
                           ),
                           backgroundColor: Colors.green,
                           content: Text(
-                            'Your ${widget.stock.ticker.toUpperCase()} Buy Order has been fully executed.',
+                            'Your ${widget.stock.ticker.toUpperCase()} Sell Order has been fully executed.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'OpenSans',
@@ -211,70 +203,14 @@ class _StockBuyFormState extends State<StockBuyForm> {
                   child: Container(
                     padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Colors.red,
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Center(
                       child: Text(
-                        'BUY',
+                        'SELL',
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Expanded(
-                flex: 1,
-                child: GestureDetector(
-                  onTap: () async {
-                    StockWatchlistDatabaseService(
-                            uid: FirebaseAuth.instance.currentUser.uid)
-                        .addStock(
-                      ticker: widget.stock.ticker.toUpperCase(),
-                      name: widget.stock.name,
-                      currentPrice: widget.stock.currentPrice,
-                      open: widget.stock.open,
-                      high: widget.stock.high,
-                      low: widget.stock.low,
-                      percentage: widget.stock.percentage,
-                      volume: widget.stock.volume,
-                      closeyest: widget.stock.closeyest,
-                      marketcap: widget.stock.marketcap,
-                      eps: widget.stock.eps,
-                      pe: widget.stock.pe,
-                      high52: widget.stock.high52,
-                      low52: widget.stock.low52,
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      backgroundColor: Colors.blue,
-                      content: Text(
-                        '${widget.stock.ticker.toUpperCase()} was added to your Watchlist.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'OpenSans',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ));
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'FAVORITE',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
                       ),
                     ),
                   ),

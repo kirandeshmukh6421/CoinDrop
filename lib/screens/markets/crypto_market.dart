@@ -68,18 +68,6 @@ class _CryptoMarketPageState extends State<CryptoMarketPage> {
     );
   }
 
-  // _showBuyForm() {
-  //   showModalBottomSheet(
-  //       isScrollControlled: true,
-  //       context: context,
-  //       builder: (context) {
-  //         return Container(
-  //           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-  //           child: CryptoBuyForm(coinsFiltered[index]),
-  //         );
-  //       });
-  // }
-
   _searchBar() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -121,10 +109,14 @@ class _CryptoMarketPageState extends State<CryptoMarketPage> {
             isScrollControlled: true,
             context: context,
             builder: (context) {
-              return Container(
-                color: kMediumGrey,
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-                child: CryptoBuyForm(coinsFiltered[index]),
+              return Padding(
+                padding: MediaQuery.of(context).viewInsets,
+                child: Container(
+                  color: kMediumGrey,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+                  child: CryptoBuyForm(coinsFiltered[index]),
+                ),
               );
             });
       },

@@ -53,7 +53,7 @@ class _StockTileState extends State<StockTile> {
               ),
               title: Text(
                 widget.stock.ticker.toUpperCase(),
-                style: kListTextStyle,
+                style: kListTextStyle.copyWith(fontSize: 17),
               ),
               subtitle: Text(
                 widget.stock.name,

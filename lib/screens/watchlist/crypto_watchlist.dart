@@ -21,11 +21,11 @@ class _CryptoWatchlistState extends State<CryptoWatchlist> {
     super.initState();
     CoinWatchlistDatabaseService(uid: FirebaseAuth.instance.currentUser.uid)
         .updateCoinData();
-    timer = Timer.periodic(
-        Duration(seconds: 10),
-        (Timer t) => CoinWatchlistDatabaseService(
-                uid: FirebaseAuth.instance.currentUser.uid)
-            .updateCoinData());
+    // timer = Timer.periodic(
+    //     Duration(seconds: 10),
+    //     (Timer t) => CoinWatchlistDatabaseService(
+    //             uid: FirebaseAuth.instance.currentUser.uid)
+    //         .updateCoinData());
   }
 
   @override

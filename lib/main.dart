@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:coindrop/models/app_user.dart';
 import 'package:coindrop/screens/splash_screen.dart';
 import 'package:coindrop/services/database/auth.dart';
@@ -6,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'shared/constants.dart';
-import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

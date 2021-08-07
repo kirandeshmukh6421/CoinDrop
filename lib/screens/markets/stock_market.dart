@@ -106,10 +106,14 @@ class _StockMarketPageState extends State<StockMarketPage> {
             isScrollControlled: true,
             context: context,
             builder: (context) {
-              return Container(
-                color: kMediumGrey,
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-                child: StockBuyForm(stocksFiltered[index]),
+              return Padding(
+                padding: MediaQuery.of(context).viewInsets,
+                child: Container(
+                  color: kMediumGrey,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+                  child: StockBuyForm(stocksFiltered[index]),
+                ),
               );
             });
       },
