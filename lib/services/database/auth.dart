@@ -72,6 +72,19 @@ class AuthService {
     }
   }
 
+  Future checkEmailVerified() async {
+    User user = FirebaseAuth.instance.currentUser;
+    await user.reload();
+    if (user != null && !user.emailVerified) {
+      await user.sendEmailVerification();
+    }
+  }
+
+  Future resetPassword(String email) async {
+    final auth = FirebaseAuth.instance;
+    return await auth.sendPasswordResetEmail(email: email);
+  }
+
   // Sign Out
   Future signOut() async {
     try {

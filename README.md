@@ -12,8 +12,8 @@ CoinDrop enables users to stay informed on the latest live Cryptocurrency and In
 - A Watchlist that contains a list of assets the user is interested in.
 - The app collects Market news from various sources and displays it to the user in the News Tab.
 - The User’s Portfolio with essential data like the assets they own, amount invested, profits, losses and other such aspects in the Portfolio Tab.
-- Users can manually buy/sell assets in the Markets Tab, which will be recorded as a Transaction, which in turn, updates the Transaction History and the value of the Portfolio.
+- Users can manually buy/sell assets in the Markets Tab, which will be recorded as a Transaction and the value of the Portfolio is updated in real-time.
 
 ## Screenshots
 
-<img src="https://i.ibb.co/T0swHXV/imageedit-5-3401628186.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/6JNLgGh/imageedit-7-9644775942.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/T8RP7KD/imageedit-9-4957369339.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/HxxJ3xv/imageedit-11-4943956799.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/T1wfR8W/imageedit-13-4540398312.png" alt="drawing" width="300"/>
+<img src="https://i.ibb.co/p2w489Q/app-mockup-android-screenshot-2-coindrop-1080x1920-2-depositphotos-bgremover.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/XZZMH2Q/app-mockup-android-screenshot-2-coindrop-1080x1920-3-depositphotos-bgremover.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/3ctz2W3/app-mockup-android-screenshot-2-coindrop-1080x1920-4-depositphotos-bgremover.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/HTgZ9RS/app-mockup-android-screenshot-2-coindrop-1080x1920-5-depositphotos-bgremover.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/NpyghtQ/app-mockup-android-screenshot-2-coindrop-1080x1920-6-depositphotos-bgremover.png" alt="drawing" width="300"/> <img src="https://i.ibb.co/wJVhdDV/app-mockup-android-screenshot-2-coindrop-1080x1920-1-depositphotos-bgremover.png" alt="drawing" width="300"/>

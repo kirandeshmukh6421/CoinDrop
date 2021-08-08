@@ -180,7 +180,6 @@ class _RegisterState extends State<Register> {
                         alignment: Alignment.center,
                         child: TextButton(
                           onPressed: () => widget.toggleView(),
-                          // padding: EdgeInsets.only(right: 0.0),
                           child: Text(
                             'Already have an Account? Login',
                             style: kLabelStyle,

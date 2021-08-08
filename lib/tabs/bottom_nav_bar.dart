@@ -1,6 +1,8 @@
+import 'package:coindrop/screens/settings/user_screen.dart';
 import 'package:coindrop/services/database/auth.dart';
 import 'package:coindrop/tabs/nested_tabs/news_tab.dart';
 import 'package:coindrop/tabs/nested_tabs/portfolio_tab.dart';
+
 import 'package:coindrop/tabs/nested_tabs/watchlist_tab.dart';
 
 import '../shared/constants.dart';
@@ -79,16 +81,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
             },
           )
         ],
-        // actions: [
-        //   IconButton(
-        //     onPressed: () async {
-        //       await _auth.signOut();
-        //     },
-        //     icon: Icon(
-        //       Icons.power_settings_new_outlined,
-        //     ),
-        //   )
-        // ],
         centerTitle: true,
         title: kAppName,
         elevation: 0,
@@ -129,7 +121,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   void choiceAction(String choice) async {
     if (choice == Constants.Settings) {
-      print('Settings');
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => UserScreen()));
     } else if (choice == Constants.SignOut) {
       await _auth.signOut();
     }

@@ -1,3 +1,4 @@
+import 'package:coindrop/screens/authentication/forgot_password.dart';
 import 'package:coindrop/services/database/auth.dart';
 import 'package:coindrop/shared/constants.dart';
 import 'package:coindrop/shared/loading.dart';
@@ -101,7 +102,21 @@ class _SignInState extends State<SignIn> {
                           },
                         ),
                       ),
-                      SizedBox(height: 30.0),
+                      Container(
+                        alignment: Alignment.center,
+                        child: TextButton(
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ForgotPassword(),
+                            ),
+                          ),
+                          child: Text(
+                            'Forgot password?',
+                            style: kLabelStyle,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20.0),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.5,
                         decoration: BoxDecoration(

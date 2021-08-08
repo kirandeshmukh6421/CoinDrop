@@ -63,7 +63,6 @@ class _CryptoBuyFormState extends State<CryptoBuyForm> {
                     FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*'))
                   ],
                   textAlign: TextAlign.center,
-                  // initialValue: "${widget.coin.currentPrice}",
                   keyboardType: TextInputType.number,
                   style: TextStyle(
                     fontSize: 17,

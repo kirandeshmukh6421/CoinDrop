@@ -1,4 +1,3 @@
-// <------------ Create a Model to store Coin Data. ------------>
 class Coin {
   String ticker;
   String name;
