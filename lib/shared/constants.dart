@@ -5,6 +5,7 @@ Text kAppName = Text(
   style: TextStyle(
     fontFamily: 'Pacifico',
     fontSize: 28,
+    color: Colors.white,
   ),
 );
 

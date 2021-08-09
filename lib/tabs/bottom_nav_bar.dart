@@ -1,3 +1,4 @@
+import 'package:coindrop/screens/authentication/verify.dart';
 import 'package:coindrop/screens/settings/user_screen.dart';
 import 'package:coindrop/services/database/auth.dart';
 import 'package:coindrop/tabs/nested_tabs/news_tab.dart';
@@ -11,9 +12,15 @@ import 'package:flutter/material.dart';
 import 'nested_tabs/markets_tab.dart';
 
 class HomePage extends StatelessWidget {
+  final bool isVerified;
+  HomePage(this.isVerified);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(child: BottomNavBar()));
+    if (isVerified) {
+      return Scaffold(body: SafeArea(child: BottomNavBar()));
+    } else {
+      return Scaffold(body: SafeArea(child: VerifyScreen()));
+    }
   }
 }
 
